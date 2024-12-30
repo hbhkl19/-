@@ -380,6 +380,7 @@
 
 
 //弗洛伊德算法
+//POJ1125—股票经纪人
 #include<iostream>
 #include<fstream>
 #include<algorithm>
@@ -446,4 +447,61 @@ int main()
 		cout << "disjoint";
 	else
 		cout << index << " " << min;
+}
+
+
+//力扣743--网络延迟时间
+#include<iostream>
+#include<fstream>
+
+using namespace std;
+
+int win[101][101];
+
+const int INF = 0x3f3f3f3f;
+
+int main()
+{
+	fstream fin("in.txt");
+	int n, kk;
+	fin >> n >> kk;
+
+	for (int i = 1; i <= n; i++)
+	{
+		for (int j = 1; j <= n; j++)
+		{
+			if (i == j)
+				win[i][j] = 0;
+			else
+				win[i][j] = INF;
+		}
+	}
+
+	int a, b, c;
+	while (fin >> a >> b >> c)
+	{
+		win[a][b] = c;
+	}
+
+	for (int k = 1; k <= n; k++)
+	{
+		for (int i = 1; i <= n; i++)
+		{
+			for (int j = 1; j <= n; j++)
+			{
+				if (win[i][j] > win[i][k] + win[k][j])
+					win[i][j] = win[i][k] + win[k][j];
+			}
+		}
+	}
+	int max = -1;
+	for (int j = 1; j <= n; j++)
+	{
+		if (max < win[kk][j])
+			max = win[kk][j];
+	}
+	if (max == INF)
+		cout << -1;
+	else
+		cout << max;
 }
