@@ -26,7 +26,7 @@ struct node
 	}
 };
 
-node* fun(string str)  //À¨ºÅ±íÊ¾½¨Ê÷
+node* fun(string str)  //æ‹¬å·è¡¨ç¤ºå»ºæ ‘
 {
 	node* head = NULL;
 	node* p;
@@ -79,7 +79,7 @@ node* fun(string str)  //À¨ºÅ±íÊ¾½¨Ê÷
 	return head;
 }
 
-void display(node* win) //ÖĞĞò±éÀú
+void display(node* win) //ä¸­åºéå†
 {
 	if (win != NULL)
 	{
@@ -89,7 +89,7 @@ void display(node* win) //ÖĞĞò±éÀú
 	}
 }
 
-void fun1(node* win)    //Êä³öÒ¶×Ó½Úµã£¨ÓÉ×óµ½ÓÒ
+void fun1(node* win)    //è¾“å‡ºå¶å­èŠ‚ç‚¹ï¼ˆç”±å·¦åˆ°å³
 {
 	if (win == NULL)
 		return;
@@ -101,7 +101,7 @@ void fun1(node* win)    //Êä³öÒ¶×Ó½Úµã£¨ÓÉ×óµ½ÓÒ
 	}
 }
 
-void fun2(node* win)       //Êä³öÒ¶×Ó½Úµã
+void fun2(node* win)       //è¾“å‡ºå¶å­èŠ‚ç‚¹
 {
 	if (win == NULL)
 		return;
@@ -114,7 +114,7 @@ void fun2(node* win)       //Êä³öÒ¶×Ó½Úµã
 	}
 }
 
-void fun3(node* win)       //²ã´Î±éÀú
+void fun3(node* win)       //å±‚æ¬¡éå†
 {
 	queue<node*>qu;
 	qu.push(win);
@@ -135,14 +135,14 @@ void fun3(node* win)       //²ã´Î±éÀú
 	}
 }
 
-int height(node* win) //Çó¸ß¶È
+int height(node* win) //æ±‚é«˜åº¦
 {
 	if (win == NULL)
 		return 0;
 	return 1 + max(height(win->lchild), height(win->rchild));
 }
 
-bool fun4(int now, int deep, node* win)     //ÅĞ¶Ï¶ş²æÊ÷
+bool fun4(int now, int deep, node* win)     //åˆ¤æ–­äºŒå‰æ ‘
 {
 	if (win == NULL)
 		return 1;
@@ -159,7 +159,7 @@ bool fun4(int now, int deep, node* win)     //ÅĞ¶Ï¶ş²æÊ÷
 	return fun4(now + 1, deep, win->lchild) && fun4(now + 1, deep, win->rchild);
 }
 
-node* fun5(string str, int i)      //Ë³Ğò´æ´¢½á¹¹µİ¹é½¨Ê÷
+node* fun5(string str, int i)      //é¡ºåºå­˜å‚¨ç»“æ„é€’å½’å»ºæ ‘
 {
 	if (i < str.length())
 	{
@@ -177,7 +177,7 @@ node* fun5(string str, int i)      //Ë³Ğò´æ´¢½á¹¹µİ¹é½¨Ê÷
 }
 
 
-bool best(node* win,int deep)    //²ã´Î±éÀúÅĞ¶ÏÊÇ·ñÎª¶ş²æÊ÷
+bool best(node* win,int deep)    //å±‚æ¬¡éå†åˆ¤æ–­æ˜¯å¦ä¸ºäºŒå‰æ ‘
 {
 	int now = 1;
 	int num = 1;
@@ -229,7 +229,7 @@ bool best(node* win,int deep)    //²ã´Î±éÀúÅĞ¶ÏÊÇ·ñÎª¶ş²æÊ÷
 	}
 }
 
-node* fun6(vector<int> a, int i, vector<int> b, int j, int n) //ÏÈĞòÖĞĞò½¨Á¢¶ş²æÊ÷
+node* fun6(vector<int> a, int i, vector<int> b, int j, int n) //å…ˆåºä¸­åºå»ºç«‹äºŒå‰æ ‘
 {
 	if (n <= 0)
 		return NULL;
