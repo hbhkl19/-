@@ -505,3 +505,67 @@ int main()
 	else
 		cout << max;
 }
+
+
+#include<iostream>
+#include<fstream>
+
+using namespace std;
+
+int win[11][11];
+const int INF = 0x3f3f3f3f;
+int main()
+{
+	int n;
+	cin >> n;
+	for (int i = 1; i <= n; i++)
+	{
+		for (int j = 1; j <= n; j++)
+		{
+			if (i == j)
+				win[i][j] = 0;
+			else
+				win[i][j] = INF;
+		}
+	}
+
+	int tmp;
+	for (int i = 1; i <= n; i++)
+	{
+		for (int j = 1; j <= n; j++)
+		{
+			cin >> tmp;
+			if (tmp != 0)
+				win[i][j] = tmp;
+		}
+	}
+
+	for (int k = 1; k <= n; k++)
+	{
+		for (int i = 1; i <= n; i++)
+		{
+			for (int j = 1; j <= n; j++)
+
+			{
+				win[i][j] = min(win[i][j], win[i][k] + win[k][j]);
+			}
+		}
+	}
+
+	int index = 0, min = INF;
+	for (int i = 1; i <= n; i++)
+	{
+		int max = 0;
+		for (int j = 1; j <= n; j++)
+		{
+			if (max < win[i][j])
+				max = win[i][j];
+		}
+		if (min > max)
+		{
+			min = max;
+			index = i;
+		}
+	}
+	cout << index;
+}
