@@ -377,3 +377,73 @@
 //	}
 //	cout << ans;
 //}
+
+
+//弗洛伊德算法
+#include<iostream>
+#include<fstream>
+#include<algorithm>
+using namespace std;
+
+int win[10005][10005];
+const int INF = 0x3f3f3f3f;
+
+int main()
+{
+	int n;
+	fstream fin("in.txt");
+	fin >> n;
+
+	for (int i = 1; i <= n; i++)
+	{
+		for (int j = 1; j <= n; j++)
+		{
+			if (i == j)
+				win[i][j] = 0;
+			else
+				win[i][j] = INF;
+		}
+	}
+
+	int tmp,a,b;
+	for (int i = 1; i <= n; i++)
+	{
+		fin >> tmp;
+		for (int j = 0; j < tmp; j++)
+		{
+			fin >> a >> b;
+			win[i][a] = b;
+		}
+	}
+
+	for (int k = 1; k <= n; k++)
+	{
+		for (int i = 1; i <= n; i++)
+		{
+			for (int j = 1; j <= n; j++)
+			{
+				if (win[i][j] > win[i][k] + win[k][j])
+					win[i][j] = win[i][k] + win[k][j];
+			}
+		}
+	}
+	int index = 0;
+	int  min = INF;
+	for (int i = 1; i <= n; i++)
+	{
+		int max = 0;
+		for (int j = 1; j <= n; j++)
+		{
+			max = max > win[i][j] ? max : win[i] [j] ;
+		}
+		if(min>max)
+		{
+			min =  max;
+			index = i;
+		}
+	}
+	if (min == INF)
+		cout << "disjoint";
+	else
+		cout << index << " " << min;
+}
